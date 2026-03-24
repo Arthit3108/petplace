@@ -1,0 +1,14 @@
+name: scan vulnerability
+
+on:
+    push:
+        branches: "main"
+
+jobs:
+    scan: 
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: Arthit3108/ai-code-scanner@v1
+              with:
+                gemini_api_key: ${{ secrets.GEMINI_API_KEY }}

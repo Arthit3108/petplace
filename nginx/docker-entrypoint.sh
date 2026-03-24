@@ -1,13 +1,7 @@
 #!/bin/sh
 
-# Load environment variables from .env if running locally (not needed in Docker)
-if [ -f .env ]; then
-  export $(grep -v '^#' .env | xargs)
-fi
-
 # Replace placeholders with actual environment variables
-envsubst '${DOMAIN}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
-# envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
+envsubst '${DOMAIN}' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp && mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
 
 # Start NGINX
 nginx -g 'daemon off;'
