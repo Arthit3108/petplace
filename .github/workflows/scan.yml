@@ -12,7 +12,4 @@ jobs:
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           severity: HIGH,CRITICAL
-          fail_on_critical: 'false'
-          fail_on_high: 'false'
-          fail_on_medium: 'false'
-          fail_on_low: 'false'
+          fail_on_critical: 'true'
